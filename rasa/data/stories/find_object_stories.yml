@@ -1,0 +1,98 @@
+version: "3.1"
+stories:
+- story: find object
+  steps:
+    - intent: find_object
+    - action: action_find_object  # Action that triggers the object detection system
+    - action: utter_object_location  # Response with the detected objects
+
+- story: locate a cane
+  steps:
+    - intent: find_object
+      entities:
+        - object: "cane"
+    - action: action_find_object
+    - action: utter_object_location
+
+- story: locate a chair
+  steps:
+    - intent: find_object
+      entities:
+        - object: "chair"
+    - action: action_find_object
+    - action: utter_object_location
+
+- story: scan for general objects
+  steps:
+    - intent: find_object
+    - action: action_find_object
+    - action: utter_object_location
+
+- story: locate a backpack
+  steps:
+    - intent: find_object
+      entities:
+        - object: "backpack"
+    - action: action_find_object
+    - action: utter_object_location
+
+- story: locate a phone
+  steps:
+    - intent: find_object
+      entities:
+        - object: "phone"
+    - action: action_find_object
+    - action: utter_object_location
+
+- story: locate multiple objects
+  steps:
+    - intent: find_object
+    - action: action_find_object
+    - action: utter_object_location
+
+- story: scan for obstacles
+  steps:
+    - intent: find_object
+    - action: action_find_object
+    - action: utter_object_location
+
+- story: find a specific item in a crowded area
+  steps:
+    - intent: find_object
+      entities:
+        - object: "bicycle"
+    - action: action_find_object
+    - action: utter_object_location
+
+- story: check for landmarks
+  steps:
+    - intent: find_object
+    - action: action_find_object
+    - action: utter_object_location
+
+- story: identify nearby furniture
+  steps:
+    - intent: find_object
+    - action: action_find_object
+    - action: utter_object_location
+
+- story: help locate a pet
+  steps:
+    - intent: find_object
+      entities:
+        - object: "dog"
+    - action: action_find_object
+    - action: utter_object_location
+
+- story: confirm if something is in reach
+  steps:
+    - intent: find_object
+    - action: action_find_object
+    - action: utter_object_location
+
+- story: asking for environmental objects
+  steps:
+    - intent: find_object
+    - action: action_find_object
+    - action: utter_object_location
+

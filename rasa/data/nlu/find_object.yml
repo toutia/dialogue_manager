@@ -1,0 +1,39 @@
+version: "3.1"
+nlu:
+  - intent: find_object
+    examples: |
+      - Can you help me locate the [remote](object)?
+      - Do you see a [bag](object) nearby?
+      - Where is the [door](object) in this room?
+      - Please help me find a [cup](object).
+      - I need to know where the [couch](object) is.
+      - Is there a [light switch](object) close by?
+      - Where’s the nearest [table](object)?
+      - Can you check for a [bottle](object) around me?
+      - I can’t find my [wallet](object).
+      - I’m looking for a [chair](object).
+      - Do you see any [keys](object) nearby?
+      - I need help finding my [phone](object).
+      - Show me where the [sink](object) is.
+      - Is there a [window](object) near me?
+      - Where can I find a [book](object)?
+      - Could you locate my [glasses](object) for me?
+      - I lost my [pencil](object), can you help me find it?
+      - I think I dropped a [pen](object) nearby.
+      - Can you tell me if there's a [bag](object) in the room?
+      - I need to find the [door](object) quickly.
+      - Do you see a [bottle](object) near me?
+      - Where's the [bed](object)?
+      - Help me find a [bench](object) outside.
+      - I’m trying to locate the [stairs](object).
+      - Can you guide me to the [doorway](object)?
+      - I’m looking for a [jacket](object) around here.
+      - Is the [fridge](object) close by?
+      - I’m trying to find a [water fountain](object).
+      - Help me locate the [trash can](object).
+      - Is there a [lamp](object) somewhere here?
+      - Where’s the nearest [plug outlet](object)?
+      - Can you point me toward the [elevator](object)?
+      - I need to find the [TV remote](object).
+      - Do you see any [stairs](object) around?
+      - Where’s the [coffee machine](object)?

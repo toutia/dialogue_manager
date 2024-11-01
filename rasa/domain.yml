@@ -1,52 +1,68 @@
 version: "3.1"
 
+# Define the intents your bot will recognize
 intents:
+  - find_object
   - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - chitchat
-  - faq
 
+
+# Define the entities your bot will extract
+entities:
+  - object
+  
+
+# Define slots for holding extracted entities
+# Slots defined in the domain
+slots:
+  object:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: object
+  object_location:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom  # Indicates this slot is set by an action, not by user input
+  object_distance:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: custom
+  object_direction:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+# Define responses that the bot can send
 responses:
+  utter_object_location:
+    - text: "The {object} is {object_distance} away, {object_direction}, at {object_location}."
+    - text: "I found the {object}. It's located {object_distance} to your {object_direction} at {object_location}."
+    - text: "The {object} is {object_direction}, about {object_distance} away, on the {object_location}."
   utter_greet:
-  - text: "Hey! How are you?"
+    - text: "Hello! How can I help you today?"
+    - text: "Hi there! What can I do for you?"
+    - text: "Hey! Let me know how I can assist you."
+    - text: "Hi! I'm here to help. What do you need assistance with?"
+    - text: "Hello! What would you like to know?"
+  utter_default:
+    - text: "I'm sorry, I didn't quite catch that. Could you rephrase?"
+    - text: "I'm not sure I understand. Could you clarify what you mean?"
+    - text: "Apologies, I didn't get that. Can you say it in a different way?"
+    - text: "I'm not able to help with that right now, but feel free to ask me something else!"
+    - text: "I'm here to help, but I'm not sure I understood that. Could you explain it again?"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
-  utter_chitchat:
-  - image: "https://i.imgur.com/zTvA58i.jpeg"
-    text: Hello, my name is Retrieval Bot.
-  - text: I am called Retrieval Bot!
-  - text: Oh, it does look sunny right now in Berlin.
-    image: "https://i.imgur.com/vwv7aHN.png"
-  - text: I am not sure of the whole week but I can see the sun is out today.
-  utter_faq:
-  - image: "https://i.imgur.com/zTvA58i.jpeg"
-    text: this is the answer to yor question
-  - text: this is another form of the answer 
+# Define actions that the bot can take
 actions:
-  - utter_faq
-  - utter_chitchat
+  - action_find_object
+  - utter_default
+
 
 
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
+

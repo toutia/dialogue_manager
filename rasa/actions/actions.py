@@ -1,27 +1,28 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/custom-actions
+from rasa_sdk import Action
+from rasa_sdk.events import SlotSet
 
+class ActionFindObject(Action):
+    def name(self):
+        return "action_find_object"
 
-# This is a simple example for a custom action which utters "Hello World!"
+    def run(self, dispatcher, tracker, domain):
 
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
+        object = tracker.get_slot("object")
+        # Example: Detect object and set its location
+        location = "table"
+        direction = "left"
+        distance = "a few feet"
+
+        events = [
+            SlotSet("object", object),
+            SlotSet("object_distance", distance),
+            SlotSet("object_direction", direction),
+            SlotSet("object_location", location)
+        ]
+
+        # Respond to the user with the object location details
+        response_text = f"I found the {object}. It's about {distance} meters away to the {direction}, located {location}."
+        dispatcher.utter_message(text=response_text)
+
+        return events
+
