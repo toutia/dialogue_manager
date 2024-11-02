@@ -3,8 +3,9 @@ stories:
 - story: find object
   steps:
     - intent: find_object
-    - action: action_find_object  # Action that triggers the object detection system
-    - action: utter_object_location  # Response with the detected objects
+    - action: action_find_object
+    - intent: thank_you
+    - action: utter_thank_you
 
 - story: locate a cane
   steps:
@@ -12,7 +13,8 @@ stories:
       entities:
         - object: "cane"
     - action: action_find_object
-    - action: utter_object_location
+    - intent: thank_you
+    - action: utter_thank_you
 
 - story: locate a chair
   steps:
@@ -20,79 +22,83 @@ stories:
       entities:
         - object: "chair"
     - action: action_find_object
-    - action: utter_object_location
+    - intent: thank_you
+    - action: utter_thank_you
 
-- story: scan for general objects
+# Other stories follow the same pattern for each specific object or general scan request.
+
+- story: Greet, Find Object, and Thank You
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: find_object
+      entities:
+        - object: "wallet"
+    - action: action_find_object
+    - intent: thank_you
+    - action: utter_thank_you
+
+- story: Cancel finding recognized object
   steps:
     - intent: find_object
-    - action: action_find_object
-    - action: utter_object_location
+      entities:
+        - object: "keys"
+    - slot_was_set:
+        - object: "keys"
+    - intent: deny
+    - action: utter_cancel_find_object
 
-- story: locate a backpack
+
+- story: find object with confirmation
+  steps:
+    - intent: find_object
+      entities:
+        - object: "phone"
+    - action: action_find_object  # This action prompts for confirmation if object_confirmed is False
+    - slot_was_set:
+        - object_confirmed: False
+    - intent: affirm
+    - action: action_set_object_confirmed  # New action to set the slot
+    - action: action_find_object  # Proceed with finding the object after confirmation
+    - intent: thank_you
+    - action: utter_thank_you
+
+- story: locate a cane with confirmation
+  steps:
+    - intent: find_object
+      entities:
+        - object: "cane"
+    - action: action_find_object
+    - slot_was_set:
+        - object_confirmed: False
+    - intent: affirm
+    - action: action_set_object_confirmed  # New action to set the slot
+    - action: action_find_object
+    - intent: thank_you
+    - action: utter_thank_you
+
+- story: locate a backpack and cancel search after prompt
   steps:
     - intent: find_object
       entities:
         - object: "backpack"
     - action: action_find_object
-    - action: utter_object_location
+    - slot_was_set:
+        - object_confirmed: False
+    - intent: deny
+    - slot_was_set:
+        - object_confirmed: False
+    - action: utter_cancel_find_object
 
-- story: locate a phone
-  steps:
-    - intent: find_object
-      entities:
-        - object: "phone"
-    - action: action_find_object
-    - action: utter_object_location
 
-- story: locate multiple objects
-  steps:
-    - intent: find_object
-    - action: action_find_object
-    - action: utter_object_location
-
-- story: scan for obstacles
+- story: locate a general object with confirmation
   steps:
     - intent: find_object
     - action: action_find_object
-    - action: utter_object_location
-
-- story: find a specific item in a crowded area
-  steps:
-    - intent: find_object
-      entities:
-        - object: "bicycle"
+    - slot_was_set:
+        - object_confirmed: False
+    - intent: affirm
+    - action: action_set_object_confirmed  # New action to set the slot
     - action: action_find_object
-    - action: utter_object_location
-
-- story: check for landmarks
-  steps:
-    - intent: find_object
-    - action: action_find_object
-    - action: utter_object_location
-
-- story: identify nearby furniture
-  steps:
-    - intent: find_object
-    - action: action_find_object
-    - action: utter_object_location
-
-- story: help locate a pet
-  steps:
-    - intent: find_object
-      entities:
-        - object: "dog"
-    - action: action_find_object
-    - action: utter_object_location
-
-- story: confirm if something is in reach
-  steps:
-    - intent: find_object
-    - action: action_find_object
-    - action: utter_object_location
-
-- story: asking for environmental objects
-  steps:
-    - intent: find_object
-    - action: action_find_object
-    - action: utter_object_location
-
+    - intent: thank_you
+    - action: utter_thank_you

@@ -1,0 +1,38 @@
+version: "3.1"
+
+nlu:
+  - intent: affirm
+    examples: |
+      - yes
+      - sure
+      - absolutely
+      - of course
+      - please do
+      - go ahead
+      - I'd like that
+      - that sounds good
+      - yes, please
+
+  - intent: deny
+    examples: |
+      - no
+      - not really
+      - no thanks
+      - maybe later
+      - actually, nevermind
+      - no, I don't need that
+      - not now
+      - I changed my mind
+
+  - intent: thank_you
+    examples: |
+      - Thank you!
+      - Thanks!
+      - I really appreciate your help.
+      - Thank you for your assistance.
+      - That was very helpful, thanks!
+      - I appreciate it, thank you!
+      - You're so helpful, thank you!
+      - I couldn't have done it without your help.
+      - Thanks a lot for your support.
+      - Thank you for being there for me.

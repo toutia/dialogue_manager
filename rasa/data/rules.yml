@@ -8,5 +8,10 @@ rules:
 
   - rule: Fallback rule
     steps:
-      - intent: nlu_fallback
-      - action: utter_default
+      - intent: nlu_fallback  # Intent triggered on low confidence
+      - action: action_default_fallback
+
+  - rule: Handle thank you
+    steps:
+      - intent: thank_you
+      - action: utter_thank_you

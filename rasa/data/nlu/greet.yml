@@ -2,6 +2,71 @@ version: "3.1"
 nlu:
   - intent: greet
     examples: |
-      - Hello
+      - Hello!
       - Hi there
+      - Hey!
+      - Hi
       - Good morning
+      - Good afternoon
+      - Good evening
+      - Hello there
+      - Hey, how are you?
+      - Hi! How’s it going?
+      - Hello, good to see you
+      - Hey, what’s up?
+      - Hi, how are you doing?
+      - Hey there!
+      - Greetings!
+      - Hi there! How can you help me?
+      - Hello! How are you today?
+      - Hey! What can you do for me?
+      - Hello! Do you have a moment?
+      - Hi, hope you’re doing well
+      - Hey, I need some assistance
+      - Hi there, bot!
+      - Hello, nice to meet you
+      - Hello, assistant!
+      - Hi there, are you available to help?
+      - Good to see you, assistant!
+      - Hi, I'm back!
+      - Good day!
+      - Howdy!
+      - Hey, you there?
+      - Hello! Long time no see
+
+  - intent: nlu_fallback
+    examples: |
+      - I don’t understand what you mean.
+      - Can you say that again?
+      - That doesn't make any sense.
+      - I'm lost.
+      - What are you talking about?
+      - I need help with something else.
+      - This isn't what I asked for.
+      - Please explain.
+      - That’s not what I wanted to find.
+      - I have a different question.
+      - Can you help me with something other than finding objects?
+      - What else can you do?
+      - I don’t know what you’re referring to.
+      - I’m not sure I follow you.
+      - Is there something you can do for me?
+      - Can you help me navigate this?
+      - I need more information.
+      - This isn't working for me.
+      - I didn’t mean that.
+      - I have no idea what you mean.
+      - That's not helpful.
+      - Can you give me an example?
+      - What if I need something else?
+      - I can't find what I'm looking for.
+      - Can you help me find my way?
+      - What's the weather like?
+      - Tell me a joke.
+      - Can you tell me about yourself?
+      - What is your name?
+      - What time is it?
+      - I don't want to find anything.
+      - Where are you located?
+      - Can you remind me about our conversation?
+      - I need assistance with my account.
