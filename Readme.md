@@ -206,3 +206,18 @@ Final Notes
 Ensure that the input formats for both intent classification and entity extraction are handled correctly in your Triton client code.
 Performance can be enhanced by using batch processing, especially when dealing with multiple requests. Adjust the max_batch_size and dynamic batching settings accordingly in your Triton configuration.
 You may need to preprocess your inputs similarly to how they were processed during training (e.g., tokenization) before sending them to Triton for inference.
+
+
+##################################" start servers rasa and actions #############################################
+
+
+(.venv_dm_server) touti@ubuntu:~/dev/dialog_manager/rasa$ ./start_service.sh 
+Starting Rasa server on port 5005...
+Rasa server started with PID 521601, logging to rasa_server.log
+Starting Rasa action server on port 5055...
+Action server started with PID 521602, logging to action_server.log
+Servers are running. Access Rasa at http://localhost:5005
+
+
+
+=> check log files for time

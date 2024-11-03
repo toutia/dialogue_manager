@@ -1,0 +1,20 @@
+/home/touti/dev/dialog_manager/pythonenvs/.venv_dm_server/lib/python3.10/site-packages/rasa/core/tracker_store.py:1044: MovedIn20Warning: Deprecated API features detected! These feature(s) are not compatible with SQLAlchemy 2.0. To prevent incompatible upgrades prior to updating applications, ensure requirements files are pinned to "sqlalchemy<2.0". Set environment variable SQLALCHEMY_WARN_20=1 to show all deprecation warnings.  Set environment variable SQLALCHEMY_SILENCE_UBER_WARNING=1 to silence this message. (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+  Base: DeclarativeMeta = declarative_base()
+/home/touti/dev/dialog_manager/pythonenvs/.venv_dm_server/lib/python3.10/site-packages/rasa/shared/utils/validation.py:134: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  import pkg_resources
+/home/touti/dev/dialog_manager/pythonenvs/.venv_dm_server/lib/python3.10/site-packages/pkg_resources/__init__.py:2825: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('mpl_toolkits')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/touti/dev/dialog_manager/pythonenvs/.venv_dm_server/lib/python3.10/site-packages/pkg_resources/__init__.py:2825: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('ruamel')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+  declare_namespace(pkg)
+/home/touti/dev/dialog_manager/pythonenvs/.venv_dm_server/lib/python3.10/site-packages/sanic_cors/extension.py:39: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  SANIC_VERSION = LooseVersion(sanic_version)
+/home/touti/dev/dialog_manager/pythonenvs/.venv_dm_server/lib/python3.10/site-packages/tensorflow/lite/python/util.py:52: DeprecationWarning: jax.xla_computation is deprecated. Please use the AOT APIs.
+  from jax import xla_computation as _xla_computation
+2024-11-03 01:22:41 INFO     root  - Starting Rasa server on http://0.0.0.0:5005
+[93m/home/touti/dev/dialog_manager/pythonenvs/.venv_dm_server/lib/python3.10/site-packages/rasa/shared/utils/io.py:99: UserWarning: No valid model found at models!
+[0m2024-11-03 01:22:41 INFO     root  - Rasa server is up and running.
+2024-11-03 01:23:08 INFO     rasa.core.agent  - Ignoring message as there is no agent to handle it.
+2024-11-03 01:25:46 INFO     rasa.core.agent  - Ignoring message as there is no agent to handle it.
+[93mNo chat connector configured, falling back to the REST input channel. To connect your bot to another channel, read the docs here: https://rasa.com/docs/rasa/messaging-and-voice-channels[0m

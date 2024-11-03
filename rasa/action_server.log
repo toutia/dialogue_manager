@@ -10,10 +10,10 @@ Implementing implicit namespace packages (as specified in PEP 420) is preferred 
   declare_namespace(pkg)
 /home/touti/dev/dialog_manager/pythonenvs/.venv_dm_server/lib/python3.10/site-packages/sanic_cors/extension.py:39: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
   SANIC_VERSION = LooseVersion(sanic_version)
-2024-11-02 23:01:33 INFO     rasa_sdk.endpoint  - Starting action endpoint server...
-2024-11-02 23:01:33 INFO     rasa_sdk.executor  - Registered function for 'action_find_object'.
-2024-11-02 23:01:33 INFO     rasa_sdk.executor  - Re-registered function for 'action_find_object'.
-2024-11-02 23:01:33 INFO     rasa_sdk.executor  - Registered function for 'action_set_object_confirmed'.
-2024-11-02 23:01:33 INFO     rasa_sdk.executor  - Registered function for 'action_default_fallback'.
-2024-11-02 23:01:33 INFO     rasa_sdk.endpoint  - Starting plugins...
-2024-11-02 23:01:33 INFO     rasa_sdk.endpoint  - Action endpoint is up and running on http://0.0.0.0:5055
+2024-11-03 01:26:20 INFO     rasa_sdk.endpoint  - Starting action endpoint server...
+2024-11-03 01:26:20 INFO     rasa_sdk.executor  - Registered function for 'action_find_object'.
+2024-11-03 01:26:20 INFO     rasa_sdk.executor  - Re-registered function for 'action_find_object'.
+2024-11-03 01:26:20 INFO     rasa_sdk.executor  - Registered function for 'action_set_object_confirmed'.
+2024-11-03 01:26:20 INFO     rasa_sdk.executor  - Registered function for 'action_default_fallback'.
+2024-11-03 01:26:20 INFO     rasa_sdk.endpoint  - Starting plugins...
+2024-11-03 01:26:20 INFO     rasa_sdk.endpoint  - Action endpoint is up and running on http://0.0.0.0:5055

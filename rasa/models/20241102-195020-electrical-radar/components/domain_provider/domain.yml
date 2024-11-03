@@ -1,0 +1,80 @@
+version: '3.1'
+intents:
+- affirm
+- deny
+- find_object
+- greet
+- nlu_fallback
+- thank_you
+entities:
+- object
+slots:
+  object_confirmed:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: custom
+  new_user:
+    type: bool
+    initial_value: true
+    mappings:
+    - type: custom
+  object:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: object
+  object_location:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  object_distance:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+  object_direction:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+responses:
+  utter_object_location:
+  - text: The {object} is {object_distance} away, {object_direction}, at {object_location}.
+  - text: I found the {object}. It's located {object_distance} to your {object_direction} at {object_location}.
+  - text: The {object} is {object_direction}, about {object_distance} away, on the {object_location}.
+  utter_greet:
+  - text: Hello! How can I help you today?
+  - text: Hi there! What can I do for you?
+  - text: Hey! Let me know how I can assist you.
+  - text: Hi! I'm here to help. What do you need assistance with?
+  - text: Hello! What would you like to know?
+  utter_thank_you:
+  - text: You're welcome! It's completely normal to help out. I'm here for you whenever you need assistance.
+  - text: No problem at all! Helping you is what I'm here for.
+  - text: I'm glad I could help! Remember, it's my job to assist you.
+  - text: You're very welcome! It's a pleasure to assist you.
+  - text: It's my pleasure! If there's anything else you need, just let me know.
+  utter_default:
+  - text: I'm sorry, I didn't quite catch that. Could you rephrase?
+  - text: I'm not sure I understand. Could you clarify what you mean?
+  - text: Apologies, I didn't get that. Can you say it in a different way?
+  - text: I'm not able to help with that right now, but feel free to ask me something else!
+  - text: I'm here to help, but I'm not sure I understood that. Could you explain it again?
+  utter_find_object_prompt:
+  - text: To help you find your {object}, I need you to move around so I can scan your environment. Do you want to proceed?
+  utter_object_not_recognized:
+  - text: I'm not sure what {object} is. Can you provide more details?
+  utter_find_object:
+  - text: I'm helping you locate the {object}. Moving forward.
+  utter_cancel_find_object:
+  - text: Alright, I won’t proceed with finding the {object}.
+actions:
+- action_find_object
+- action_default_fallback
+- action_set_object_confirmed
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
