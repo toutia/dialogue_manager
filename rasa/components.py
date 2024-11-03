@@ -13,6 +13,8 @@ from transformers import DistilBertTokenizer
     [DefaultV1Recipe.ComponentType.INTENT_CLASSIFIER, DefaultV1Recipe.ComponentType.ENTITY_EXTRACTOR],
     is_trainable=False
 )
+
+
 class DistillBertNluComponent(GraphComponent):
     def __init__(self, config: Dict[Text, Any], model_name: Text, triton_url: Text, tokenizer: DistilBertTokenizer):
         self.config = config
