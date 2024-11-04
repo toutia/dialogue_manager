@@ -15,3 +15,8 @@ rules:
     steps:
       - intent: thank_you
       - action: utter_thank_you
+
+  - rule: handling find object 
+    steps: 
+      - intent: find_object 
+      - action: action_confirm_object

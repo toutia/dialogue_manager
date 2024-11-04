@@ -23,9 +23,9 @@ pipeline:
   min_ngram: 1
   max_ngram: 1
 
-- name: LanguageModelFeaturizer
+- name: components.TritonLanguageModelFeaturizer
   model_name: "distilbert"
-  model_weights: "/home/touti/dev/dialog_manager/rasa/models/distilbert"  # Path to your local DistilBERT model
+  model_url: "localhost:8000"
   
 
 - name: DIETClassifier

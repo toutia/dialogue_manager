@@ -5,14 +5,6 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk import Action, Tracker
 from typing import Any, Dict, List, Text
 
-class ActionFindObject(Action):
-    def name(self):
-        return "action_find_object"
-
-    def run(self, dispatcher, tracker, domain):
-
-        object = tracker.get_slot("object")
-        # Example: Detect object and set its location
         
 class ActionFindObject(Action):
     def name(self) -> Text:
@@ -20,26 +12,10 @@ class ActionFindObject(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         object_to_find = tracker.get_slot("object")
-        object_confirmed = tracker.get_slot("object_confirmed")
-        message_text=None
-        # Check if the object is confirmed by the user
-        if not object_confirmed:
-            # Prompt user to confirm the object
-            if not object_to_find:
-                message_text=f"Could you please tell me what you're looking for? Please be specific."
-               
-            else :
-                message_text= f"Are you looking for {object_to_find}? Please confirm."
-            dispatcher.utter_message(
-                text= message_text
-            )
-            return [SlotSet("object_confirmed", False)]
-        
+       
         # start the detection server here 
         # send object as global param {obj:obj, mode: detection}
         
-
-
         # If confirmed, proceed with object location guidance
         dispatcher.utter_message(
             text=f"Looking for the {object_to_find}. Move around slowly to help me locate it."
@@ -58,7 +34,6 @@ class ActionFindObject(Action):
             SlotSet("object_distance", distance),
             SlotSet("object_direction", direction),
             SlotSet("object_location", location),
-            SlotSet("object_confirmed", True)
         ]
 
         # Respond to the user with the object location details
@@ -67,15 +42,25 @@ class ActionFindObject(Action):
 
         return events
 
-
-
-class ActionSetObjectConfirmed(Action):
+class ActionConfirmObject(Action):
     def name(self) -> str:
-        return "action_set_object_confirmed"
+        return "action_confirm_object"
 
     def run(self, dispatcher, tracker, domain):
         # Set the object_confirmed slot to True when the user affirms
-        return [SlotSet("object_confirmed", True)]
+        object_to_find = tracker.get_slot("object")
+         # Check if the object is confirmed by the user
+
+        if not object_to_find:
+            message_text=f"Could you please tell me what you're looking for? Please be specific."
+            
+        else :
+            message_text= f"Are you looking for {object_to_find}? Please confirm."
+        dispatcher.utter_message(
+            text= message_text
+        )
+        return []
+
 
 
 class ActionDefaultFallback(Action):

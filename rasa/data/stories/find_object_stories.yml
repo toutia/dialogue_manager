@@ -1,104 +1,114 @@
 version: "3.1"
 stories:
-- story: find object
-  steps:
-    - intent: find_object
-    - action: action_find_object
-    - intent: thank_you
-    - action: utter_thank_you
 
-- story: locate a cane
-  steps:
-    - intent: find_object
-      entities:
-        - object: "cane"
-    - action: action_find_object
-    - intent: thank_you
-    - action: utter_thank_you
 
-- story: locate a chair
+- story: locate multiple objects with confirmation 
   steps:
-    - intent: find_object
-      entities:
-        - object: "chair"
-    - action: action_find_object
-    - intent: thank_you
-    - action: utter_thank_you
-
-# Other stories follow the same pattern for each specific object or general scan request.
-
-- story: Greet, Find Object, and Thank You
-  steps:
-    - intent: greet
-    - action: utter_greet
     - intent: find_object
       entities:
         - object: "wallet"
+    - action : action_confirm_object
+    - intent: affirm
+    - action: action_find_object
+
+    - intent: find_object
+      entities:
+        - object: "keys"
+    - action: action_confirm_object
+    - intent: affirm  # User confirms the object
     - action: action_find_object
     - intent: thank_you
     - action: utter_thank_you
 
-- story: Cancel finding recognized object
+
+
+- story: locate multiple objects with confirmation and denial
   steps:
     - intent: find_object
       entities:
-        - object: "keys"
-    - slot_was_set:
-        - object: "keys"
+        - object: "car"
+    - action : action_confirm_object
+    - intent: affirm
+    - action: action_find_object
+
+    - intent: find_object
+      entities:
+        - object: "glasses"
+    - action : action_confirm_object
     - intent: deny
     - action: utter_cancel_find_object
 
+    - intent: find_object
+      entities:
+        - object: "bus"
+    - action: action_confirm_object
+    - intent: affirm  # User confirms the object
+    - action: action_find_object
+    - intent: thank_you
+    - action: utter_thank_you
+
+
+- story: locate a book with affirmation
+  steps:
+    - intent: find_object
+      entities:
+        - object: "book"
+    - action : action_confirm_object
+    - intent: affirm
+    - action: action_find_object
+    - intent: thank_you
+    - action: utter_thank_you
 
 - story: find object with confirmation
   steps:
     - intent: find_object
       entities:
-        - object: "phone"
-    - action: action_find_object  # This action prompts for confirmation if object_confirmed is False
-    - slot_was_set:
-        - object_confirmed: False
-    - intent: affirm
-    - action: action_set_object_confirmed  # New action to set the slot
-    - action: action_find_object  # Proceed with finding the object after confirmation
-    - intent: thank_you
-    - action: utter_thank_you
-
-- story: locate a cane with confirmation
-  steps:
-    - intent: find_object
-      entities:
-        - object: "cane"
-    - action: action_find_object
-    - slot_was_set:
-        - object_confirmed: False
-    - intent: affirm
-    - action: action_set_object_confirmed  # New action to set the slot
-    - action: action_find_object
-    - intent: thank_you
-    - action: utter_thank_you
-
-- story: locate a backpack and cancel search after prompt
-  steps:
-    - intent: find_object
-      entities:
         - object: "backpack"
+    - action : action_confirm_object
+    - intent: affirm
     - action: action_find_object
-    - slot_was_set:
-        - object_confirmed: False
+    - intent: thank_you
+    - action: utter_thank_you
+
+
+- story: locate phone and deny search
+  steps:
+    - intent: find_object
+      entities:
+        - object: "phone"
+    - action : action_confirm_object
     - intent: deny
-    - slot_was_set:
-        - object_confirmed: False
     - action: utter_cancel_find_object
 
-
-- story: locate a general object with confirmation
+- story: locate object and precise 
   steps:
     - intent: find_object
-    - action: action_find_object
-    - slot_was_set:
-        - object_confirmed: False
-    - intent: affirm
-    - action: action_set_object_confirmed  # New action to set the slot
+    - action : action_confirm_object
+    - intent: precise_object
+      entities:
+        - object: "camera"
     - action: action_find_object
     - intent: thank_you
     - action: utter_thank_you
+
+- story: multiple object find with affirm deny and precide object
+  steps:
+    - intent: find_object
+      entities:
+        - object: "remote"
+    - action: action_confirm_object
+    - intent: affirm
+    - action: action_find_object
+
+    - intent: find_object
+    - action: action_confirm_object
+    - intent : precise_object
+      entities:
+        - object: "headset"
+    - action: action_find_object
+    - intent: find_object
+      entities:
+        - object: "chair"
+    - action: action_confirm_object
+    - intent: deny
+    - action: utter_cancel_find_object

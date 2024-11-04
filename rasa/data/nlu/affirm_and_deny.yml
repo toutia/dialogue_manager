@@ -12,6 +12,9 @@ nlu:
       - I'd like that
       - that sounds good
       - yes, please
+      - correct 
+      - indeed 
+      - that's right 
 
   - intent: deny
     examples: |

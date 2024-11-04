@@ -37,3 +37,26 @@ nlu:
       - I need to find the [TV remote](object).
       - Do you see any [stairs](object) around?
       - Where’s the [coffee machine](object)?
+
+  
+  - intent: precise_object
+    examples: |
+      - [keys](object)
+      - [wallet](object)
+      - [backpack](object)
+      - [phone](object)
+      - [cane](object)
+      - [chair](object)
+      - [bottle](object)
+      - [glasses](object)
+      - [umbrella](object)
+      - [hat](object)
+      - [charger](object)
+      - my [car](object)
+      - the [car's chair](object)
+      - my [mother's purse](object)
+      - the [kitchen table](object)
+      - my [brother's bike](object)
+      - the [living room couch](object)
+      - [garden shovel](object)
+      - [guest room bed](object)
