@@ -6,6 +6,7 @@ intents:
 - thank_you
 - find_object
 - precise_object
+- stop_object_finder
 - nlu_fallback  # Add your fallback intent here
 
 entities:
@@ -65,6 +66,7 @@ actions:
 - action_find_object
 - action_default_fallback
 - action_confirm_object
+- action_stop_object_finder
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

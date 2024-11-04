@@ -20,3 +20,8 @@ rules:
     steps: 
       - intent: find_object 
       - action: action_confirm_object
+
+  - rule: Stop the object finder
+    steps:
+      - intent: stop_object_finder
+      - action: action_stop_object_finder

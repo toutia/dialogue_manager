@@ -60,3 +60,16 @@ nlu:
       - the [living room couch](object)
       - [garden shovel](object)
       - [guest room bed](object)
+
+
+  - intent: stop_object_finder
+    examples: |
+      - stop
+      - stop it
+      - ok, I found it
+      - that's enough
+      - stop the sound
+      - no need to continue
+      - you can stop now
+      - I found what I was looking for
+      - cancel the search

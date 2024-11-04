@@ -4,27 +4,40 @@ from rasa_sdk.events import UserUtteranceReverted
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk import Action, Tracker
 from typing import Any, Dict, List, Text
-
-        
+import requests
+from config import object_finder_config    
+import time 
 class ActionFindObject(Action):
     def name(self) -> Text:
         return "action_find_object"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         object_to_find = tracker.get_slot("object")
+        url = object_finder_config['OF_API_URL']
        
-        # start the detection server here 
-        # send object as global param {obj:obj, mode: detection}
+         # start the detection server here 
+        try:
+            response= requests.post(f"{url}/set_target", json= {"target": object_to_find})
+            response.raise_for_status()  # Raise an error for unsuccessful requests
+        except requests.exceptions.RequestException as e:
+            dispatcher.utter_message("There was an error setting the target object  of the  object finder.")
+        
+
+        try:
+            response= requests.post(f"{url}/start_pipelines")
+            response.raise_for_status()  # Raise an error for unsuccessful requests
+        except requests.exceptions.RequestException as e:
+            dispatcher.utter_message("There was an error statring the object finder")
+    
+        
+        # response= requests.post(f"{url}/stop_pipelines")
         
         # If confirmed, proceed with object location guidance
         dispatcher.utter_message(
             text=f"Looking for the {object_to_find}. Move around slowly to help me locate it."
         )
-        # Optionally provide further instructions or guidance
-        dispatcher.utter_message(
-            text="I will notify you when I find the object."
-        )
 
+     
         location = "table"
         direction = "left"
         distance = "a few feet"
@@ -35,12 +48,31 @@ class ActionFindObject(Action):
             SlotSet("object_direction", direction),
             SlotSet("object_location", location),
         ]
-
-        # Respond to the user with the object location details
-        response_text = f"I found the {object_to_find}. It's about {distance} meters away to the {direction}, located {location}."
-        dispatcher.utter_message(text=response_text)
+      
 
         return events
+    
+class ActionStopObjectFinder(Action):
+
+    def name(self) -> str:
+        return "action_stop_object_finder"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: dict) -> list:
+        # The URL of the REST API endpoint you want to call
+        url = object_finder_config['OF_API_URL']
+        
+
+        payload={}
+        # Making the REST API call
+        try:
+            response = requests.post(f"{url}/stop_pipelines", json=payload)
+            response.raise_for_status()  # Raise an error for unsuccessful requests
+            dispatcher.utter_message("Object finder has been stopped.")
+        except requests.exceptions.RequestException as e:
+            dispatcher.utter_message("There was an error stopping the object finder.")
+            print(f"Error calling REST API: {e}")
+
+        return []
 
 class ActionConfirmObject(Action):
     def name(self) -> str:
