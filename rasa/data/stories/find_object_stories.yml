@@ -1,6 +1,11 @@
 version: "3.1"
 stories:
 
+- story: Restart conversation story
+  steps:
+    - intent: restart_conversation
+    - action: action_restart_conversation_with_message
+
 
 - story: locate multiple objects with confirmation 
   steps:

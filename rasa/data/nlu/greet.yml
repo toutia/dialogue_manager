@@ -70,3 +70,21 @@ nlu:
       - Where are you located?
       - Can you remind me about our conversation?
       - I need assistance with my account.
+
+  - intent: restart_conversation
+    examples: |
+      - restart
+      - start over
+      - reset the conversation
+      - can we start fresh?
+      - let’s start again
+      - begin a new conversation
+      - can we start from scratch?
+      - I want to start over
+      - please reset
+      - start a new session
+      - let’s begin again
+      - clear everything and start over
+      - go back to the beginning
+      - reset everything
+      - I want to restart the assistant

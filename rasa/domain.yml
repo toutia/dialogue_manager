@@ -8,6 +8,7 @@ intents:
 - precise_object
 - stop_object_finder
 - nlu_fallback  # Add your fallback intent here
+- restart_conversation
 
 entities:
 - object
@@ -67,6 +68,7 @@ actions:
 - action_default_fallback
 - action_confirm_object
 - action_stop_object_finder
+- action_restart_conversation_with_message
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

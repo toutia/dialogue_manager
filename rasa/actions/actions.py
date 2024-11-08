@@ -7,6 +7,9 @@ from typing import Any, Dict, List, Text
 import requests
 from config import object_finder_config    
 import time 
+from rasa_sdk.events import Restarted
+
+
 class ActionFindObject(Action):
     def name(self) -> Text:
         return "action_find_object"
@@ -73,6 +76,26 @@ class ActionStopObjectFinder(Action):
             print(f"Error calling REST API: {e}")
 
         return []
+
+
+
+
+
+from rasa_sdk import Action
+from rasa_sdk.events import Restarted
+
+class ActionIntroduceNova(Action):
+    def name(self):
+        return "action_restart_conversation_with_message"
+    
+    def run(self, dispatcher, tracker, domain):
+        # Introduction message tailored for visually impaired users
+        dispatcher.utter_message(text="Hello! I am Nova, your voice assistant. How can I assist you today? Feel free to ask for help with anything you need.")
+        return [Restarted()]
+
+
+
+
 
 class ActionConfirmObject(Action):
     def name(self) -> str:
