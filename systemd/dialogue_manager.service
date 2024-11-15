@@ -1,0 +1,15 @@
+[Unit]
+Description=Rasa Server and Action Server
+After=triton_manager.service
+Requires=triton_manager.service
+
+[Service]
+ExecStart=/home/touti/dev/dialog_manager/rasa/start_services.sh
+WorkingDirectory=/home/touti/dev/dialog_manager/rasa
+Restart=on-failure
+RestartSec=10
+User=touti
+
+
+[Install]
+WantedBy=multi-user.target

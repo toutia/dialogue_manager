@@ -25,3 +25,8 @@ rules:
     steps:
       - intent: stop_object_finder
       - action: action_stop_object_finder
+
+  - rule: Restart conversation
+      steps:
+      - intent: restart_conversation  # User triggers restart, e.g., by saying "restart"
+      - action: action_restart_conversation_with_message
